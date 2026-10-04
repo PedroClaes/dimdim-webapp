@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head th:replace="~{fragments :: head('Clientes')}"></head>
+<body>
+<header th:replace="~{fragments :: topo('clientes')}"></header>
+
+<main class="pagina">
+    <div class="cabecalho-pagina">
+        <div>
+            <h1>Clientes</h1>
+            <p>Pessoas com cadastro na DimDim.</p>
+        </div>
+        <a class="botao" th:href="@{/clientes/novo}">Novo cliente</a>
+    </div>
+
+    <div th:replace="~{fragments :: aviso}"></div>
+
+    <div class="vazio" th:if="${#lists.isEmpty(clientes)}">
+        <p>Nenhum cliente cadastrado.</p>
+        <a class="botao" th:href="@{/clientes/novo}">Cadastrar o primeiro cliente</a>
+    </div>
+
+    <div class="tabela-wrap" th:unless="${#lists.isEmpty(clientes)}">
+        <table>
+            <thead>
+            <tr>
+                <th class="num">ID</th>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>E-mail</th>
+                <th>Cliente desde</th>
+                <th><span class="sr">Ações</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="c : ${clientes}">
+                <td class="num id" th:text="${c.id}">1</td>
+                <td th:text="${c.nome}">Nome</td>
+                <td class="tabular" th:text="${c.cpfFormatado}">000.000.000-00</td>
+                <td th:text="${c.email}">email</td>
+                <td class="tabular" th:text="${#temporals.format(c.dataCadastro, 'dd/MM/yyyy')}">01/01/2026</td>
+                <td>
+                    <div class="acoes">
+                        <a class="link-acao" th:href="@{/clientes/{id}/editar(id=${c.id})}">Editar</a>
+                        <form th:action="@{/clientes/{id}/excluir(id=${c.id})}" method="post"
+                              onsubmit="return confirm('Excluir este cliente? As contas dele também serão excluídas.');">
+                            <button class="link-acao link-perigo" type="submit">Excluir</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+</body>
+</html>

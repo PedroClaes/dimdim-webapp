@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head th:replace="~{fragments :: head('Contas')}"></head>
+<body>
+<header th:replace="~{fragments :: topo('contas')}"></header>
+
+<main class="pagina">
+    <div class="cabecalho-pagina">
+        <div>
+            <h1>Contas</h1>
+            <p>Contas correntes e poupanças, com o cliente titular.</p>
+        </div>
+        <a class="botao" th:href="@{/contas/novo}">Abrir conta</a>
+    </div>
+
+    <div th:replace="~{fragments :: aviso}"></div>
+
+    <div class="vazio" th:if="${#lists.isEmpty(contas)}">
+        <p>Nenhuma conta aberta.</p>
+        <a class="botao" th:href="@{/contas/novo}">Abrir a primeira conta</a>
+    </div>
+
+    <div class="tabela-wrap" th:unless="${#lists.isEmpty(contas)}">
+        <table>
+            <thead>
+            <tr>
+                <th class="num">ID</th>
+                <th>Número</th>
+                <th>Agência</th>
+                <th>Tipo</th>
+                <th class="num">Saldo</th>
+                <th>Titular</th>
+                <th><span class="sr">Ações</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="c : ${contas}">
+                <td class="num id" th:text="${c.id}">1</td>
+                <td class="tabular" th:text="${c.numero}">00000-0</td>
+                <td class="tabular" th:text="${c.agencia}">0001</td>
+                <td><span class="etiqueta" th:classappend="${c.tipo.name() == 'POUPANCA'} ? 'etiqueta-poupanca'"
+                          th:text="${c.tipo.rotulo}">Corrente</span></td>
+                <td class="num" th:text="'R$ ' + ${#numbers.formatDecimal(c.saldo, 1, 'POINT', 2, 'COMMA')}">R$ 0,00</td>
+                <td th:text="${c.cliente.nome}">Titular</td>
+                <td>
+                    <div class="acoes">
+                        <a class="link-acao" th:href="@{/contas/{id}/editar(id=${c.id})}">Editar</a>
+                        <form th:action="@{/contas/{id}/excluir(id=${c.id})}" method="post"
+                              onsubmit="return confirm('Encerrar esta conta?');">
+                            <button class="link-acao link-perigo" type="submit">Encerrar</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+</body>
+</html>

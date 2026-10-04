@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head th:replace="~{fragments :: head(${conta.id == null} ? 'Abrir conta' : 'Editar conta')}"></head>
+<body>
+<header th:replace="~{fragments :: topo('contas')}"></header>
+
+<main class="pagina">
+    <div class="cabecalho-pagina">
+        <div>
+            <h1 th:text="${conta.id == null} ? 'Abrir conta' : 'Editar conta'">Conta</h1>
+            <p th:if="${conta.id != null}" th:text="'Registro ID ' + ${conta.id}"></p>
+        </div>
+    </div>
+
+    <div class="vazio" th:if="${#lists.isEmpty(clientes)}">
+        <p>Toda conta precisa de um titular, e ainda não há clientes cadastrados.</p>
+        <a class="botao" th:href="@{/clientes/novo}">Cadastrar cliente</a>
+    </div>
+
+    <form class="formulario" method="post" novalidate th:object="${conta}"
+          th:unless="${#lists.isEmpty(clientes)}"
+          th:action="${conta.id == null} ? @{/contas} : @{/contas/{id}(id=${conta.id})}">
+
+        <div class="campo">
+            <label for="clienteId">Titular</label>
+            <select id="clienteId" name="clienteId" th:classappend="${erroCliente} ? 'campo-invalido'">
+                <option value="">Selecione o cliente</option>
+                <option th:each="cl : ${clientes}" th:value="${cl.id}"
+                        th:text="${cl.nome} + ' (' + ${cl.cpfFormatado} + ')'"
+                        th:selected="${cl.id == clienteSelecionado}">Cliente</option>
+            </select>
+            <p class="erro" th:if="${erroCliente}" th:text="${erroCliente}"></p>
+        </div>
+
+        <div class="campo-duplo">
+            <div class="campo">
+                <label for="agencia">Agência</label>
+                <input type="text" th:field="*{agencia}" maxlength="10" inputmode="numeric" th:errorclass="campo-invalido">
+                <p class="erro" th:if="${#fields.hasErrors('agencia')}" th:errors="*{agencia}"></p>
+            </div>
+            <div class="campo">
+                <label for="numero">Número da conta</label>
+                <input type="text" th:field="*{numero}" maxlength="20" th:errorclass="campo-invalido">
+                <p class="erro" th:if="${#fields.hasErrors('numero')}" th:errors="*{numero}"></p>
+            </div>
+        </div>
+
+        <div class="campo-duplo">
+            <div class="campo">
+                <label for="tipo">Tipo</label>
+                <select th:field="*{tipo}" th:errorclass="campo-invalido">
+                    <option th:each="t : ${tipos}" th:value="${t}" th:text="${t.rotulo}">Corrente</option>
+                </select>
+                <p class="erro" th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}"></p>
+            </div>
+            <div class="campo">
+                <label for="saldo">Saldo (R$)</label>
+                <input type="number" th:field="*{saldo}" min="0" step="0.01" th:errorclass="campo-invalido">
+                <p class="erro" th:if="${#fields.hasErrors('saldo')}" th:errors="*{saldo}"></p>
+            </div>
+        </div>
+
+        <div class="linha-botoes">
+            <button class="botao" type="submit"
+                    th:text="${conta.id == null} ? 'Abrir conta' : 'Salvar alterações'">Salvar</button>
+            <a class="link-acao" th:href="@{/contas}">Cancelar</a>
+        </div>
+    </form>
+</main>
+</body>
+</html>

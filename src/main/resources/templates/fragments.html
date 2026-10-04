@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head th:fragment="head(titulo)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${titulo} + ' | DimDim'">DimDim</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/dimdim.css}">
+</head>
+<body>
+
+<header class="topo" th:fragment="topo(ativo)">
+    <a class="marca" th:href="@{/}" aria-label="DimDim, ir para o início">
+        <span class="bolha" aria-hidden="true">dim<br>dim</span>
+        <span class="marca-sub">Gestão de clientes e contas</span>
+    </a>
+    <nav aria-label="Principal">
+        <a th:href="@{/clientes}" th:classappend="${ativo == 'clientes'} ? 'ativo'"
+           th:attr="aria-current=${ativo == 'clientes'} ? 'page'">Clientes</a>
+        <a th:href="@{/contas}" th:classappend="${ativo == 'contas'} ? 'ativo'"
+           th:attr="aria-current=${ativo == 'contas'} ? 'page'">Contas</a>
+    </nav>
+</header>
+
+<div th:fragment="aviso" th:if="${msg}" class="aviso" role="status" th:text="${msg}"></div>
+
+</body>
+</html>

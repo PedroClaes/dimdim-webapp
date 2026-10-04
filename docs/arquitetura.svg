@@ -1,0 +1,214 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="990" viewBox="0 0 1600 990" font-family="DejaVu Sans, Arial, sans-serif">
+  <defs>
+    <marker id="seta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1F4E8C"/>
+    </marker>
+    <marker id="setaVerde" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1E8A4C"/>
+    </marker>
+    <marker id="setaRoxa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6B3FB5"/>
+    </marker>
+    <marker id="setaLaranja" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#D9731A"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="990" fill="#FFFFFF"/>
+
+  <!-- Título -->
+  <text x="30" y="52" font-size="28" font-weight="bold" fill="#0B2D5C">DimDim · Arquitetura da Solução</text>
+  <text x="30" y="80" font-size="15" fill="#4A5A70">2º Checkpoint (2º sem.) · DevOps Tools &amp; Cloud Computing · Grupo dimdimCP5 · Web App + Azure SQL + Application Insights</text>
+
+  <!-- ================= Ambiente do desenvolvedor ================= -->
+  <rect x="30" y="110" width="310" height="380" rx="14" fill="#F4F8FD" stroke="#1F4E8C" stroke-width="2"/>
+  <rect x="30" y="110" width="310" height="52" rx="14" fill="#0B3D91"/>
+  <rect x="30" y="140" width="310" height="22" fill="#0B3D91"/>
+  <text x="185" y="143" font-size="17" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Ambiente do Desenvolvedor</text>
+
+  <g font-size="14" fill="#1B2A3F">
+    <rect x="48" y="180" width="274" height="62" rx="8" fill="#FFFFFF" stroke="#B9CDE6"/>
+    <text x="62" y="205" font-weight="bold">Código-fonte</text>
+    <text x="62" y="226">Spring Boot 3 · Thymeleaf · Java 17</text>
+
+    <rect x="48" y="252" width="274" height="62" rx="8" fill="#FFFFFF" stroke="#B9CDE6"/>
+    <text x="62" y="277" font-weight="bold">scripts/ddl.sql</text>
+    <text x="62" y="298">tabelas cliente (1) ─ (N) conta</text>
+
+    <rect x="48" y="324" width="274" height="62" rx="8" fill="#FFFFFF" stroke="#B9CDE6"/>
+    <text x="62" y="349" font-weight="bold">scripts/*.sh</text>
+    <text x="62" y="370">Azure CLI + Maven + sqlcmd</text>
+
+    <rect x="48" y="396" width="274" height="76" rx="8" fill="#FFFFFF" stroke="#B9CDE6"/>
+    <text x="62" y="421" font-weight="bold">GitHub</text>
+    <text x="62" y="442">código, scripts, DDL,</text>
+    <text x="62" y="461">README (How To) e arquitetura</text>
+  </g>
+
+  <!-- Passos -->
+  <g font-size="14" fill="#1B2A3F">
+    <rect x="30" y="515" width="310" height="104" rx="12" fill="#EAF6EF" stroke="#1E8A4C" stroke-width="2"/>
+    <circle cx="62" cy="547" r="18" fill="#1E8A4C"/>
+    <text x="62" y="553" font-size="18" font-weight="bold" fill="#FFFFFF" text-anchor="middle">1</text>
+    <text x="92" y="545" font-weight="bold" font-size="15">Provisionar (Azure CLI)</text>
+    <text x="92" y="568">01-criar-banco.sh</text>
+    <text x="92" y="588">02-criar-webapp.sh</text>
+    <text x="92" y="608" font-size="12" fill="#4A5A70">cria todos os recursos e as tabelas</text>
+
+    <rect x="30" y="635" width="310" height="104" rx="12" fill="#EAF6EF" stroke="#1E8A4C" stroke-width="2"/>
+    <circle cx="62" cy="667" r="18" fill="#1E8A4C"/>
+    <text x="62" y="673" font-size="18" font-weight="bold" fill="#FFFFFF" text-anchor="middle">2</text>
+    <text x="92" y="665" font-weight="bold" font-size="15">Build e Deploy</text>
+    <text x="92" y="688">03-deploy.sh</text>
+    <text x="92" y="708">mvn package → az webapp deploy</text>
+    <text x="92" y="728" font-size="12" fill="#4A5A70">publica target/dimdim.jar</text>
+
+    <rect x="30" y="755" width="310" height="80" rx="12" fill="#FDF1F0" stroke="#B42318" stroke-width="2"/>
+    <circle cx="62" cy="787" r="18" fill="#B42318"/>
+    <text x="62" y="793" font-size="18" font-weight="bold" fill="#FFFFFF" text-anchor="middle">3</text>
+    <text x="92" y="785" font-weight="bold" font-size="15">Remover tudo</text>
+    <text x="92" y="808">99-remover-tudo.sh</text>
+    <text x="92" y="826" font-size="12" fill="#4A5A70">apaga o grupo de recursos</text>
+  </g>
+
+  <!-- ================= Azure ================= -->
+  <rect x="380" y="110" width="870" height="860" rx="18" fill="#EEF5FC" stroke="#2F6FB5" stroke-width="2"/>
+  <text x="410" y="152" font-size="22" font-weight="bold" fill="#0B3D91">Microsoft Azure</text>
+  <text x="410" y="176" font-size="13" fill="#4A5A70">Assinatura Azure for Students · região brazilsouth</text>
+
+  <!-- Resource group -->
+  <rect x="400" y="215" width="830" height="735" rx="14" fill="#FFFFFF" stroke="#2F6FB5" stroke-width="2" stroke-dasharray="9 6"/>
+  <rect x="400" y="215" width="380" height="40" rx="10" fill="#0B3D91"/>
+  <text x="418" y="241" font-size="16" font-weight="bold" fill="#FFFFFF">Resource Group · rg-dimdim-566058</text>
+
+  <!-- App Service Plan + Web App -->
+  <rect x="420" y="275" width="400" height="330" rx="12" fill="#F4F8FD" stroke="#5B8FD0" stroke-width="1.5"/>
+  <text x="438" y="300" font-size="14" font-weight="bold" fill="#1F4E8C">App Service Plan (Linux · B1)</text>
+  <text x="438" y="319" font-size="13" fill="#4A5A70">plan-dimdim-566058</text>
+
+  <rect x="440" y="335" width="360" height="252" rx="10" fill="#FFFFFF" stroke="#1F4E8C" stroke-width="2"/>
+  <rect x="440" y="335" width="360" height="44" rx="10" fill="#1F4E8C"/>
+  <rect x="440" y="360" width="360" height="19" fill="#1F4E8C"/>
+  <text x="620" y="364" font-size="16" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Web App · webapp-dimdim-566058</text>
+  <g font-size="13" fill="#1B2A3F">
+    <text x="458" y="402">Java 17 · Spring Boot · telas Thymeleaf</text>
+    <text x="458" y="422">CRUD de Clientes e Contas (front-end)</text>
+    <text x="458" y="452" font-weight="bold" fill="#1F4E8C">App Settings (variáveis de ambiente)</text>
+    <text x="458" y="472" font-family="DejaVu Sans Mono, monospace" font-size="12">DB_URL · DB_USER · DB_PASSWORD</text>
+    <text x="458" y="490" font-family="DejaVu Sans Mono, monospace" font-size="12">APPLICATIONINSIGHTS_CONNECTION_STRING</text>
+    <text x="458" y="508" font-family="DejaVu Sans Mono, monospace" font-size="12">ApplicationInsightsAgent_EXTENSION_VERSION</text>
+    <rect x="458" y="526" width="324" height="44" rx="8" fill="#FFF6D6" stroke="#E0B400"/>
+    <text x="620" y="545" font-size="12" text-anchor="middle" fill="#5A4700">Senhas só nas App Settings da Azure:</text>
+    <text x="620" y="562" font-size="12" text-anchor="middle" fill="#5A4700">nenhum dado sensível no código/GitHub</text>
+  </g>
+
+  <!-- Azure SQL -->
+  <rect x="890" y="275" width="320" height="330" rx="12" fill="#FFF7EF" stroke="#D9731A" stroke-width="2"/>
+  <text x="908" y="302" font-size="16" font-weight="bold" fill="#9A4A00">Azure SQL (PaaS)</text>
+  <text x="908" y="322" font-size="13" fill="#4A5A70">sqlserver-dimdim-566058</text>
+  <rect x="908" y="336" width="284" height="126" rx="10" fill="#FFFFFF" stroke="#E8A35F"/>
+  <text x="922" y="360" font-size="14" font-weight="bold" fill="#1B2A3F">Banco db-dimdim (Basic)</text>
+  <rect x="922" y="374" width="112" height="70" rx="6" fill="#FDEBD8" stroke="#D9731A"/>
+  <text x="978" y="400" font-size="14" font-weight="bold" text-anchor="middle" fill="#1B2A3F">cliente</text>
+  <text x="978" y="422" font-size="12" text-anchor="middle" fill="#4A5A70">PK id · cpf único</text>
+  <rect x="1066" y="374" width="112" height="70" rx="6" fill="#FDEBD8" stroke="#D9731A"/>
+  <text x="1122" y="400" font-size="14" font-weight="bold" text-anchor="middle" fill="#1B2A3F">conta</text>
+  <text x="1122" y="422" font-size="12" text-anchor="middle" fill="#4A5A70">FK cliente_id</text>
+  <line x1="1034" y1="409" x2="1066" y2="409" stroke="#9A4A00" stroke-width="2"/>
+  <text x="1042" y="402" font-size="11" fill="#9A4A00">1</text>
+  <text x="1055" y="402" font-size="11" fill="#9A4A00">N</text>
+  <g font-size="13" fill="#1B2A3F">
+    <text x="908" y="490" font-weight="bold" fill="#9A4A00">Firewall do servidor</text>
+    <text x="908" y="511">• AllowAzureServices (Web App)</text>
+    <text x="908" y="531">• IP do desenvolvedor (sqlcmd)</text>
+    <text x="908" y="562" font-weight="bold" fill="#9A4A00">Backup gerenciado</text>
+    <text x="908" y="583">patches e backups pela Azure</text>
+  </g>
+
+  <!-- Web App -> SQL -->
+  <line x1="800" y1="440" x2="888" y2="440" stroke="#D9731A" stroke-width="3" marker-end="url(#setaLaranja)"/>
+  <text x="844" y="428" font-size="12" font-weight="bold" text-anchor="middle" fill="#9A4A00">JDBC</text>
+  <text x="844" y="462" font-size="11" text-anchor="middle" fill="#9A4A00">TLS 1433</text>
+
+  <!-- Monitoramento -->
+  <rect x="420" y="665" width="790" height="265" rx="12" fill="#F6F2FC" stroke="#6B3FB5" stroke-width="1.5"/>
+  <text x="438" y="692" font-size="15" font-weight="bold" fill="#4B2A86">Monitoramento e Telemetria</text>
+
+  <rect x="440" y="708" width="400" height="204" rx="10" fill="#FFFFFF" stroke="#6B3FB5" stroke-width="2"/>
+  <text x="458" y="734" font-size="15" font-weight="bold" fill="#4B2A86">Application Insights</text>
+  <text x="458" y="753" font-size="13" fill="#4A5A70">appi-dimdim-566058</text>
+  <g font-size="13" fill="#1B2A3F">
+    <text x="458" y="781">• Requisições e tempo de resposta</text>
+    <text x="458" y="802">• Dependências: chamadas SQL ao banco</text>
+    <text x="458" y="823">• Falhas e exceções</text>
+    <text x="458" y="844">• Mapa do aplicativo (App ↔ SQL)</text>
+    <text x="458" y="865">• Métricas em tempo real</text>
+    <text x="458" y="893" font-size="12" fill="#4A5A70">agente Java codeless (sem alterar o código)</text>
+  </g>
+
+  <rect x="900" y="708" width="290" height="140" rx="10" fill="#FFFFFF" stroke="#6B3FB5" stroke-width="2"/>
+  <text x="918" y="734" font-size="15" font-weight="bold" fill="#4B2A86">Log Analytics</text>
+  <text x="918" y="753" font-size="13" fill="#4A5A70">law-dimdim-566058</text>
+  <text x="918" y="781" font-size="13" fill="#1B2A3F">Workspace onde o</text>
+  <text x="918" y="800" font-size="13" fill="#1B2A3F">App Insights armazena</text>
+  <text x="918" y="819" font-size="13" fill="#1B2A3F">logs e métricas</text>
+
+  <line x1="840" y1="778" x2="898" y2="778" stroke="#6B3FB5" stroke-width="3" marker-end="url(#setaRoxa)"/>
+
+  <!-- Web App -> App Insights -->
+  <line x1="720" y1="587" x2="720" y2="706" stroke="#6B3FB5" stroke-width="3" marker-end="url(#setaRoxa)"/>
+  <text x="732" y="630" font-size="12" font-weight="bold" fill="#4B2A86">telemetria</text>
+  <text x="732" y="646" font-size="12" fill="#4B2A86">(requisições + SQL)</text>
+
+  <!-- Dev -> Azure arrows -->
+  <path d="M340,567 L368,567 L368,250 L398,250" fill="none" stroke="#1E8A4C" stroke-width="3" marker-end="url(#setaVerde)"/>
+  <path d="M340,687 L390,687 L390,480 L438,480" fill="none" stroke="#1E8A4C" stroke-width="3" marker-end="url(#setaVerde)"/>
+
+  <!-- ================= Usuários ================= -->
+  <rect x="1290" y="110" width="280" height="150" rx="14" fill="#F4F8FD" stroke="#1F4E8C" stroke-width="2"/>
+  <rect x="1290" y="110" width="280" height="46" rx="14" fill="#0B3D91"/>
+  <rect x="1290" y="136" width="280" height="20" fill="#0B3D91"/>
+  <text x="1430" y="140" font-size="17" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Usuários</text>
+  <text x="1430" y="188" font-size="13" text-anchor="middle" fill="#1B2A3F">Navegador (desktop ou celular)</text>
+  <text x="1430" y="216" font-size="11" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" fill="#1F4E8C">https://webapp-dimdim-566058</text>
+  <text x="1430" y="232" font-size="11" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" fill="#1F4E8C">.azurewebsites.net</text>
+
+  <!-- Users -> Web App -->
+  <path d="M1290,195 L760,195 L760,333" fill="none" stroke="#1F4E8C" stroke-width="3" marker-end="url(#seta)"/>
+  <rect x="975" y="181" width="80" height="26" rx="13" fill="#1F4E8C"/>
+  <text x="1015" y="199" font-size="13" font-weight="bold" fill="#FFFFFF" text-anchor="middle">HTTPS</text>
+
+  <!-- CRUD -->
+  <rect x="1290" y="290" width="280" height="250" rx="14" fill="#FFFFFF" stroke="#1E8A4C" stroke-width="2"/>
+  <rect x="1290" y="290" width="280" height="44" rx="14" fill="#1E8A4C"/>
+  <rect x="1290" y="314" width="280" height="20" fill="#1E8A4C"/>
+  <text x="1430" y="319" font-size="16" font-weight="bold" fill="#FFFFFF" text-anchor="middle">CRUD nas 2 tabelas</text>
+  <g font-size="13" fill="#1B2A3F">
+    <text x="1308" y="362" font-weight="bold">Clientes</text>
+    <text x="1308" y="382">cadastrar · listar · editar · excluir</text>
+    <text x="1308" y="414" font-weight="bold">Contas</text>
+    <text x="1308" y="434">abrir · listar · editar · encerrar</text>
+    <text x="1308" y="466" fill="#4A5A70">Excluir um cliente remove</text>
+    <text x="1308" y="485" fill="#4A5A70">as contas dele (cascade)</text>
+    <text x="1308" y="517" fill="#4A5A70">Validações: CPF, e-mail, saldo ≥ 0</text>
+  </g>
+
+  <!-- Evidências -->
+  <rect x="1290" y="570" width="280" height="300" rx="14" fill="#FFFFFF" stroke="#D9731A" stroke-width="2"/>
+  <rect x="1290" y="570" width="280" height="44" rx="14" fill="#D9731A"/>
+  <rect x="1290" y="594" width="280" height="20" fill="#D9731A"/>
+  <text x="1430" y="599" font-size="16" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Evidências</text>
+  <g font-size="13" fill="#1B2A3F">
+    <text x="1308" y="642" font-weight="bold">Persistência no banco</text>
+    <text x="1308" y="662">SELECT após cada operação,</text>
+    <text x="1308" y="681">nas duas tabelas</text>
+    <rect x="1308" y="694" width="244" height="54" rx="6" fill="#1B2A3F"/>
+    <text x="1320" y="716" font-family="DejaVu Sans Mono, monospace" font-size="12" fill="#9BE7B4">&gt; SELECT * FROM cliente;</text>
+    <text x="1320" y="736" font-family="DejaVu Sans Mono, monospace" font-size="12" fill="#9BE7B4">&gt; SELECT * FROM conta;</text>
+    <text x="1308" y="778" font-weight="bold">Monitoramento</text>
+    <text x="1308" y="798">Visão geral · Mapa do aplicativo</text>
+    <text x="1308" y="817">Falhas · Desempenho</text>
+    <text x="1308" y="836">(Dependências SQL)</text>
+  </g>
+  <path d="M1210,440 L1250,440 L1250,640 L1288,640" fill="none" stroke="#D9731A" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#setaLaranja)"/>
+</svg>
