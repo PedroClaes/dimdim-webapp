@@ -11,7 +11,7 @@ Grupo **dimdimCP5**
 | Kevin Martins Campos | RM563454 |
 
 - **Aplicação publicada:** https://webapp-dimdim-566058.azurewebsites.net
-- **Vídeo com as evidências:** `<LINK_DO_VIDEO>`
+- **Vídeo com as evidências:** 
 
 ---
 
@@ -101,7 +101,7 @@ Terminal Linux (Bash) com:
 ### 6.2 Clonar o projeto e entrar na Azure
 
 ```bash
-git clone <URL_DO_REPOSITORIO>
+git clone https://github.com/PedroClaes/imdim-webapp.git  
 cd <PASTA_DO_REPOSITORIO>
 chmod +x scripts/*.sh
 
