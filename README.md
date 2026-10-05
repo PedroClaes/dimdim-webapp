@@ -102,7 +102,7 @@ Terminal Linux (Bash) com:
 
 ```bash
 git clone https://github.com/PedroClaes/imdim-webapp.git  
-cd <PASTA_DO_REPOSITORIO>
+cd dimdim-webapp
 chmod +x scripts/*.sh
 
 az login
