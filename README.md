@@ -11,7 +11,7 @@ Grupo **dimdimCP5**
 | Kevin Martins Campos | RM563454 |
 
 - **Aplicação publicada:** https://webapp-dimdim-566058.azurewebsites.net
-- **Vídeo com as evidências:** 
+- **Vídeo com as evidências:** `<LINK_DO_VIDEO>`
 
 ---
 
@@ -36,7 +36,7 @@ Toda a infraestrutura é criada **via Azure CLI**, pelos scripts da pasta [`scri
 
 | Recurso | Nome | Função |
 |---|---|---|
-| Grupo de recursos | `rg-dimdim-566058` | Agrupa todos os recursos (região `brazilsouth`) |
+| Grupo de recursos | `rg-dimdim-566058` | Agrupa todos os recursos (região `eastus`) |
 | Servidor Azure SQL | `sqlserver-dimdim-566058` | Servidor lógico do banco (PaaS) |
 | Banco de dados | `db-dimdim` | Banco **Basic** com as tabelas `cliente` e `conta` |
 | Plano do App Service | `plan-dimdim-566058` | Plano **Linux B1** |
@@ -101,8 +101,8 @@ Terminal Linux (Bash) com:
 ### 6.2 Clonar o projeto e entrar na Azure
 
 ```bash
-git clone https://github.com/PedroClaes/imdim-webapp.git  
-cd dimdim-webapp
+git clone <URL_DO_REPOSITORIO>
+cd <PASTA_DO_REPOSITORIO>
 chmod +x scripts/*.sh
 
 az login

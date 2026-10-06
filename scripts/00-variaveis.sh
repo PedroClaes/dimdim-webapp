@@ -9,7 +9,7 @@ RM="566058"
 
 # Região. Se a assinatura de estudante recusar com "RequestDisallowedByPolicy"
 # ou "not accepting creation of new ... servers", troque (ex.: eastus2, eastus, westus2).
-LOCATION="brazilsouth"
+LOCATION="eastus"
 
 RESOURCE_GROUP="rg-dimdim-${RM}"
 
