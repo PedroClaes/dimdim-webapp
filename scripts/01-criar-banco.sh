@@ -23,11 +23,11 @@ az group create \
   --location "$LOCATION" \
   --output table
 
-echo ">> Criando o servidor lógico ${SQL_SERVER}"
+echo ">> Criando o servidor lógico ${SQL_SERVER} em ${SQL_LOCATION}"
 az sql server create \
   --name "$SQL_SERVER" \
   --resource-group "$RESOURCE_GROUP" \
-  --location "$LOCATION" \
+  --location "$SQL_LOCATION" \
   --admin-user "$SQL_ADMIN_USER" \
   --admin-password "$SQL_ADMIN_PASSWORD" \
   --enable-public-network true \
@@ -64,11 +64,25 @@ az sql db create \
 
 # Criação das tabelas: usa o sqlcmd se estiver instalado; senão, orienta pelo Query Editor
 if command -v sqlcmd > /dev/null 2>&1; then
+  # A regra de firewall recém-criada pode levar alguns segundos para valer:
+  # tenta executar o DDL até 5 vezes, esperando 20 segundos entre as tentativas.
   echo ">> Executando o DDL (scripts/ddl.sql)"
-  # A senha vai pela variável SQLCMDPASSWORD (não aparece na linha de comando)
-  SQLCMDPASSWORD="$SQL_ADMIN_PASSWORD" sqlcmd \
-    -S "${SQL_SERVER}.database.windows.net" -d "$SQL_DB" \
-    -U "$SQL_ADMIN_USER" -i ./ddl.sql
+  DDL_OK=0
+  for TENTATIVA in 1 2 3 4 5; do
+    if SQLCMDPASSWORD="$SQL_ADMIN_PASSWORD" sqlcmd \
+         -S "${SQL_SERVER}.database.windows.net" -d "$SQL_DB" \
+         -U "$SQL_ADMIN_USER" -l 30 -i ./ddl.sql; then
+      DDL_OK=1
+      break
+    fi
+    echo "   tentativa ${TENTATIVA} sem sucesso; aguardando 20 s para tentar de novo..."
+    sleep 20
+  done
+  if [ "$DDL_OK" -ne 1 ]; then
+    echo "!! Não foi possível conectar na porta 1433 do Azure SQL a partir desta rede."
+    echo "   Verifique se a rede bloqueia a porta 1433 e rode de novo: ./scripts/01-criar-banco.sh"
+    exit 1
+  fi
   echo ">> Tabelas criadas:"
   SQLCMDPASSWORD="$SQL_ADMIN_PASSWORD" sqlcmd \
     -S "${SQL_SERVER}.database.windows.net" -d "$SQL_DB" \

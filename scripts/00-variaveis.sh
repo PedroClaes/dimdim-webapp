@@ -7,9 +7,14 @@
 
 RM="566058"
 
-# Região. Se a assinatura de estudante recusar com "RequestDisallowedByPolicy"
-# ou "not accepting creation of new ... servers", troque (ex.: eastus2, eastus, westus2).
+# Regiões (todas permitidas pela política da assinatura FIAP:
+# eastus, mexicocentral, northcentralus, southcentralus, brazilsouth).
+# A Azure for Students limita a capacidade por região, então cada serviço
+# fica onde a assinatura aceita criá-lo:
+#   - grupo de recursos, Web App e monitoramento: eastus
+#   - Azure SQL: brazilsouth (eastus não aceita novos servidores SQL)
 LOCATION="eastus"
+SQL_LOCATION="brazilsouth"
 
 RESOURCE_GROUP="rg-dimdim-${RM}"
 

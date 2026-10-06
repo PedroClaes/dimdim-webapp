@@ -36,7 +36,7 @@ Toda a infraestrutura é criada **via Azure CLI**, pelos scripts da pasta [`scri
 
 | Recurso | Nome | Função |
 |---|---|---|
-| Grupo de recursos | `rg-dimdim-566058` | Agrupa todos os recursos (região `eastus`) |
+| Grupo de recursos | `rg-dimdim-566058` | Agrupa todos os recursos (Web App e monitoramento em `eastus`; Azure SQL em `brazilsouth`) |
 | Servidor Azure SQL | `sqlserver-dimdim-566058` | Servidor lógico do banco (PaaS) |
 | Banco de dados | `db-dimdim` | Banco **Basic** com as tabelas `cliente` e `conta` |
 | Plano do App Service | `plan-dimdim-566058` | Plano **Linux B1** |
@@ -109,7 +109,7 @@ az login
 az account show --output table
 ```
 
-> Os nomes dos recursos ficam em `scripts/00-variaveis.sh`. Para usar outro RM ou outra região permitida pela política da assinatura (ex.: `eastus`), altere `RM` e `LOCATION` nesse arquivo.
+> Os nomes dos recursos ficam em `scripts/00-variaveis.sh`. Para usar outro RM ou outra região permitida pela política da assinatura (ex.: `eastus`), altere `RM`, `LOCATION` (grupo, Web App e monitoramento) e `SQL_LOCATION` (Azure SQL) nesse arquivo.
 
 ### 6.3 Criar o banco: `01-criar-banco.sh`
 
